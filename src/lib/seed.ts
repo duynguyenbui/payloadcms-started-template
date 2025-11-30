@@ -64,10 +64,13 @@ export const seed = async ({
   }
 
   const picsFolder = path.join(process.cwd(), 'public', 'media')
-  const files = await fs.readdir(picsFolder)
-  for (const file of files) {
-    await fs.unlink(path.join(picsFolder, file))
-  }
+  try {
+    await fs.mkdir(picsFolder, { recursive: true })
+    const files = await fs.readdir(picsFolder)
+    for (const file of files) {
+      await fs.unlink(path.join(picsFolder, file))
+    }
+  } catch (error) {}
 
   payload.logger.info(`— Cleared collections and globals...`)
 

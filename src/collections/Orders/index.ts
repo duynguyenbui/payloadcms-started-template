@@ -253,7 +253,45 @@ export const Orders: CollectionConfig = {
     {
       type: 'row',
       admin: { position: 'sidebar' },
-      fields: [amountField({ currenciesConfig }), currencyField({ currenciesConfig })],
+      fields: [
+        {
+          name: 'paidAmount',
+          type: 'number',
+          admin: {
+            position: 'sidebar',
+          },
+          defaultValue: 0,
+          min: 0,
+          label: ({ t }) =>
+            // @ts-expect-error - translations are not typed in plugins yet
+            t('plugin-ecommerce:paidAmount'),
+        },
+        {
+          name: 'deliveryFee',
+          type: 'number',
+          admin: {
+            position: 'sidebar',
+          },
+          defaultValue: 0,
+          min: 0,
+          label: ({ t }) =>
+            // @ts-expect-error - translations are not typed in plugins yet
+            t('plugin-ecommerce:deliveryFee'),
+        },
+      ],
+    },
+    {
+      type: 'row',
+      admin: { position: 'sidebar' },
+      fields: [
+        amountField({
+          currenciesConfig,
+          overrides: {
+            required: true,
+          },
+        }),
+        currencyField({ currenciesConfig }),
+      ],
     },
   ],
 }

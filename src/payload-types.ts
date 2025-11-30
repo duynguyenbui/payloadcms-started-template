@@ -302,8 +302,6 @@ export interface Variant {
   inventory: number;
   priceInVNDEnabled?: boolean | null;
   priceInVND?: number | null;
-  priceInUSDEnabled?: boolean | null;
-  priceInUSD?: number | null;
   updatedAt: string;
   createdAt: string;
   deletedAt?: string | null;
@@ -333,8 +331,6 @@ export interface Product {
   };
   priceInVNDEnabled?: boolean | null;
   priceInVND?: number | null;
-  priceInUSDEnabled?: boolean | null;
-  priceInUSD?: number | null;
   relatedProducts?: (number | Product)[] | null;
   categories?: (number | Category)[] | null;
   /**
@@ -358,7 +354,7 @@ export interface Order {
           product: number | Product;
           variant?: (number | null) | Variant;
           quantity: number;
-          currency?: ('VND' | 'USD') | null;
+          currency?: 'VND' | null;
           amount: number;
           id?: string | null;
         }[]
@@ -381,8 +377,10 @@ export interface Order {
     deposit?: number | null;
   };
   orderStatus?: OrderStatus;
-  amount?: number | null;
-  currency?: ('VND' | 'USD') | null;
+  paidAmount?: number | null;
+  deliveryFee?: number | null;
+  amount: number;
+  currency?: 'VND' | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -668,8 +666,6 @@ export interface VariantsSelect<T extends boolean = true> {
   inventory?: T;
   priceInVNDEnabled?: T;
   priceInVND?: T;
-  priceInUSDEnabled?: T;
-  priceInUSD?: T;
   updatedAt?: T;
   createdAt?: T;
   deletedAt?: T;
@@ -694,8 +690,6 @@ export interface ProductsSelect<T extends boolean = true> {
   variants?: T;
   priceInVNDEnabled?: T;
   priceInVND?: T;
-  priceInUSDEnabled?: T;
-  priceInUSD?: T;
   relatedProducts?: T;
   categories?: T;
   generateSlug?: T;
@@ -746,6 +740,8 @@ export interface OrdersSelect<T extends boolean = true> {
         deposit?: T;
       };
   orderStatus?: T;
+  paidAmount?: T;
+  deliveryFee?: T;
   amount?: T;
   currency?: T;
   updatedAt?: T;

@@ -15,7 +15,8 @@ export const USD: Currency = {
   symbol: '$',
 }
 
+// Support VND only for now
 export const currenciesConfig: CurrenciesConfig = {
-  supportedCurrencies: [VND, USD],
+  supportedCurrencies: [VND],
   defaultCurrency: 'VND',
 }

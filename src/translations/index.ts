@@ -87,7 +87,9 @@ export const translations: Partial<Record<AcceptedLanguages, any>> = {
       paymentStatusPaid: 'Đã thanh toán',
       paymentStatusFailed: 'Thất bại',
       paymentStatusPartial: 'Đã thanh toán một phần',
-      deposit: 'Tiền đã thanh toán',
+      deposit: 'Tiền đặt cọc',
+      deliveryFee: 'Phí vận chuyển',
+      paidAmount: 'Tiền đã thanh toán',
 
       orderStatus: 'Trạng thái đơn hàng',
       orderStatusProcessing: 'Đang xử lý',
@@ -184,6 +186,8 @@ export const translations: Partial<Record<AcceptedLanguages, any>> = {
       paymentStatusFailed: 'Failed',
       paymentStatusPartial: 'Partial',
       deposit: 'Deposit',
+      deliveryFee: 'Delivery fee',
+      paidAmount: 'Paid amount',
 
       orderStatus: 'Order status',
       orderStatusProcessing: 'Processing',

@@ -12,14 +12,38 @@ export async function GET(): Promise<Response> {
   // Authenticate by passing request headers
   const { user } = await payload.auth({ headers: requestHeaders })
 
-  if (!user) {
-    return new Response('Action forbidden.', { status: 403 })
+  let loggedInUser = user
+
+  if (!loggedInUser) {
+    const adminUser = await payload.find({
+      collection: 'users',
+      where: { email: { equals: 'admin@payloadcms.com' } },
+      limit: 1,
+    })
+
+    if (adminUser.docs.length === 0) {
+      await payload.create({
+        collection: 'users',
+        data: { email: 'admin@payloadcms.com', password: 'admin' },
+      })
+    }
+
+    const { user: authenticatedAdmin } = await payload.login({
+      collection: 'users',
+      data: { email: 'admin@payloadcms.com', password: 'admin' },
+    })
+
+    loggedInUser = authenticatedAdmin
+  }
+
+  if (!loggedInUser) {
+    return new Response('Could not authenticate.', { status: 401 })
   }
 
   try {
     // Create a Payload request object to pass to the Local API for transactions
     // At this point you should pass in a user, locale, and any other context you need for the Local API
-    const payloadReq = await createLocalReq({ user }, payload)
+    const payloadReq = await createLocalReq({ user: loggedInUser }, payload)
 
     await seed({ payload, req: payloadReq })
 
