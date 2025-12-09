@@ -1,4 +1,7 @@
-/** Localization Configurations */
+/**
+ * Localization Configurations
+ * @description Configurations for slugify
+ */
 export const slugifyConfigs = {
   vi: {
     lowerCase: true,
@@ -16,6 +19,7 @@ export const slugifyConfigs = {
 
 /**
  * Application Configurations
+ * @description Configurations for application
  */
 export const applicationConfig = {
   databaseUri: process.env.DATABASE_URI || '',
@@ -25,6 +29,7 @@ export const applicationConfig = {
 
 /**
  * S3 Configurations
+ * @description Configurations for S3
  */
 export const s3Config = {
   accessKeyId: process.env.S3_ACCESS_KEY_ID || '',

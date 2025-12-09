@@ -52,5 +52,5 @@ node_modules/
 /playwright/.cache/
 
 # BMad Method
-# .bmad-core/
-# .cursor/
+.bmad-core/
+.cursor/
