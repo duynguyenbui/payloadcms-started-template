@@ -107,7 +107,7 @@ export const seed = async ({
         collection: 'categories',
         data: {
           title: category,
-          slug: slugify(category, slugifyConfigs.vi),
+          slug: category, 
           parent: clothingCategory,
         },
       })
