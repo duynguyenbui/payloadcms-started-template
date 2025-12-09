@@ -1,5 +1,7 @@
+import { slugifyConfigs } from '@/configurations'
 import { slugField } from 'payload'
 import type { CollectionConfig } from 'payload'
+import slugify from 'slugify'
 
 export const Categories: CollectionConfig = {
   slug: 'categories',
@@ -35,6 +37,7 @@ export const Categories: CollectionConfig = {
     },
     slugField({
       position: 'sidebar',
+      slugify: ({ valueToSlugify }) => slugify(valueToSlugify, slugifyConfigs.vi),
     }),
   ],
 }

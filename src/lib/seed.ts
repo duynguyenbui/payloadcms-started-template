@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import path from 'path'
 import fs from 'fs/promises'
-
-import type { CollectionSlug, GlobalSlug, Payload, PayloadRequest, File } from 'payload'
 import slugify from 'slugify'
 
+import type { CollectionSlug, Payload, PayloadRequest, File } from 'payload'
+
 import { Media, VariantOption } from '@/payload-types'
+import { slugifyConfigs } from '@/configurations'
 
 const collections: CollectionSlug[] = [
   'variants',
@@ -14,7 +15,6 @@ const collections: CollectionSlug[] = [
   'products',
   'categories',
   'media',
-  'logs',
 ]
 
 const categories = ['Giày dép', 'Quần áo', 'Phụ kiện']
@@ -43,7 +43,7 @@ const colorVariantOptions = [
 ]
 
 const partner = {
-  email: 'partner@fashion-store.com',
+  email: 'partner@payloadcms.com',
   password: 'partner',
 }
 
@@ -95,12 +95,7 @@ export const seed = async ({
         collection: 'categories',
         data: {
           title: category,
-          slug: slugify(category, {
-            lower: true,
-            strict: true,
-            locale: 'vi',
-            trim: true,
-          }),
+          slug: category,
         },
       })
     }),
@@ -112,12 +107,7 @@ export const seed = async ({
         collection: 'categories',
         data: {
           title: category,
-          slug: slugify(category, {
-            lower: true,
-            strict: true,
-            locale: 'vi',
-            trim: true,
-          }),
+          slug: slugify(category, slugifyConfigs.vi),
           parent: clothingCategory,
         },
       })
@@ -198,7 +188,7 @@ export const seed = async ({
     const media = await payload.create({
       collection: 'media',
       data: {
-        alt: `Product Image ${index + 1}`,
+        alt: `Hình ảnh sản phẩm ${index + 1}`,
       },
       file: filePayload,
     })
@@ -229,12 +219,7 @@ export const seed = async ({
     depth: 0,
     data: {
       title: 'Giày sneaker nam basic',
-      slug: slugify('Giày sneaker nam basic', {
-        lower: true,
-        strict: true,
-        locale: 'vi',
-        trim: true,
-      }),
+      slug: 'Giày sneaker nam basic',
       description:
         'Giày sneaker nam basic với thiết kế tối giản, đế êm, dễ phối đồ, phù hợp đi làm và đi chơi hằng ngày.',
       inventory: 120,
@@ -252,12 +237,7 @@ export const seed = async ({
     depth: 0,
     data: {
       title: 'Giày sneaker nữ lifestyle',
-      slug: slugify('Giày sneaker nữ lifestyle', {
-        lower: true,
-        strict: true,
-        locale: 'vi',
-        trim: true,
-      }),
+      slug: 'Giày sneaker nữ lifestyle',
       description:
         'Giày sneaker nữ phong cách lifestyle với phối màu trẻ trung, phù hợp đi học, đi chơi, dạo phố.',
       inventory: Math.floor(Math.random() * 80) + 80,
@@ -266,7 +246,7 @@ export const seed = async ({
       priceInVND: 849000,
       enableVariants: false,
       categories: [shoesCategory],
-      relatedProducts: [],
+      relatedProducts: [sneakersMenProduct],
     },
   })
 
@@ -279,12 +259,7 @@ export const seed = async ({
       variantTypes: [sizeVariantType],
       categories: [clothingCategory, tshirtSubCategory],
       title: 'Áo thun unisex cotton 100%',
-      slug: slugify('Áo thun unisex cotton 100%', {
-        lower: true,
-        strict: true,
-        locale: 'vi',
-        trim: true,
-      }),
+      slug: 'Áo thun unisex cotton 100%',
       description:
         'Áo thun unisex chất liệu cotton 100% thoáng mát, phom oversize, phù hợp mặc hằng ngày hoặc đi chơi.',
       priceInVNDEnabled: false,
@@ -302,12 +277,7 @@ export const seed = async ({
     depth: 0,
     data: {
       title: 'Áo khoác denim unisex',
-      slug: slugify('Áo khoác denim unisex', {
-        lower: true,
-        strict: true,
-        locale: 'vi',
-        trim: true,
-      }),
+      slug: 'Áo khoác denim unisex',
       description:
         'Áo khoác denim unisex form rộng, chất vải dày dặn, dễ phối với áo thun và quần jeans.',
       inventory: 0,
@@ -327,12 +297,7 @@ export const seed = async ({
     depth: 0,
     data: {
       title: 'Quần jeans nam slim-fit',
-      slug: slugify('Quần jeans nam slim-fit', {
-        lower: true,
-        strict: true,
-        locale: 'vi',
-        trim: true,
-      }),
+      slug: 'Quần jeans nam slim-fit',
       description:
         'Quần jeans nam dáng slim-fit, co giãn nhẹ, phù hợp đi làm và đi chơi, dễ phối với nhiều kiểu áo.',
       inventory: 160,
@@ -350,12 +315,7 @@ export const seed = async ({
     depth: 0,
     data: {
       title: 'Thắt lưng da thật bản vừa',
-      slug: slugify('Thắt lưng da thật bản vừa', {
-        lower: true,
-        strict: true,
-        locale: 'vi',
-        trim: true,
-      }),
+      slug: 'Thắt lưng da thật bản vừa',
       description:
         'Thắt lưng da thật bản vừa, mặt khóa kim, phù hợp mix với quần tây hoặc quần jeans.',
       inventory: 90,
@@ -373,12 +333,7 @@ export const seed = async ({
     depth: 0,
     data: {
       title: 'Túi canvas tote bag basic',
-      slug: slugify('Túi canvas tote bag basic', {
-        lower: true,
-        strict: true,
-        locale: 'vi',
-        trim: true,
-      }),
+      slug: 'Túi canvas tote bag basic',
       description:
         'Túi canvas tote bag basic, chất liệu dày dặn, thích hợp đi học, đi làm hoặc dạo phố.',
       inventory: 130,
@@ -396,12 +351,7 @@ export const seed = async ({
     depth: 0,
     data: {
       title: 'Bộ sưu tập Streetwear Collaboration',
-      slug: slugify('Bộ sưu tập Streetwear Collaboration', {
-        lower: true,
-        strict: true,
-        locale: 'vi',
-        trim: true,
-      }),
+      slug: 'Bộ sưu tập Streetwear Collaboration',
       description:
         'Bộ sưu tập streetwear hợp tác cùng local brand, số lượng giới hạn, phong cách cá tính và nổi bật.',
       inventory: 60,

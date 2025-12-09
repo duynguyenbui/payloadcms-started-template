@@ -80,7 +80,6 @@ export interface Config {
     variants: Variant;
     products: Product;
     orders: Order;
-    logs: Log;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -103,7 +102,6 @@ export interface Config {
     variants: VariantsSelect<false> | VariantsSelect<true>;
     products: ProductsSelect<false> | ProductsSelect<true>;
     orders: OrdersSelect<false> | OrdersSelect<true>;
-    logs: LogsSelect<false> | LogsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -112,10 +110,10 @@ export interface Config {
   db: {
     defaultIDType: number;
   };
-  fallbackLocale: null;
+  fallbackLocale: ('false' | 'none' | 'null') | false | null | ('en' | 'vi') | ('en' | 'vi')[];
   globals: {};
   globalsSelect: {};
-  locale: null;
+  locale: 'en' | 'vi';
   user: User & {
     collection: 'users';
   };
@@ -386,24 +384,6 @@ export interface Order {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "logs".
- */
-export interface Log {
-  id: number;
-  data:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -457,10 +437,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'orders';
         value: number | Order;
-      } | null)
-    | ({
-        relationTo: 'logs';
-        value: number | Log;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -744,15 +720,6 @@ export interface OrdersSelect<T extends boolean = true> {
   deliveryFee?: T;
   amount?: T;
   currency?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "logs_select".
- */
-export interface LogsSelect<T extends boolean = true> {
-  data?: T;
   updatedAt?: T;
   createdAt?: T;
 }

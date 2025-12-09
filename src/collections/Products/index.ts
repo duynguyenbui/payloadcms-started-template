@@ -4,6 +4,8 @@ import { currenciesConfig } from '@/constants'
 
 import { inventoryField } from '@/collections/CustomFields/inventoryField'
 import { pricesField } from '@/collections/CustomFields/pricesField'
+import { slugifyConfigs } from '@/configurations'
+import slugify from 'slugify'
 
 const fields: Field[] = [
   {
@@ -177,7 +179,9 @@ const fields: Field[] = [
     hasMany: true,
     relationTo: 'categories',
   },
-  slugField(),
+  slugField({
+    slugify: ({ valueToSlugify }) => slugify(valueToSlugify, slugifyConfigs.vi),
+  }),
 ]
 
 export const Products: CollectionConfig = {

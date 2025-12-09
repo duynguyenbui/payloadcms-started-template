@@ -16,7 +16,6 @@ import { VariantTypes } from './collections/Variants/VariantTypes'
 import { Variants } from './collections/Variants'
 import { Categories } from './collections/Categories'
 import { Orders } from './collections/Orders'
-import { Logs } from './collections/Logs'
 
 import { applicationConfig } from './configurations'
 
@@ -33,7 +32,6 @@ const collections = [
   Variants,
   Products,
   Orders,
-  Logs,
 ]
 
 const filename = fileURLToPath(import.meta.url)
@@ -81,5 +79,19 @@ export default buildConfig({
     fallbackLanguage: 'vi',
     supportedLanguages: { en, vi },
     translations,
+  },
+  localization: {
+    locales: [
+      {
+        label: 'English',
+        code: 'en',
+      },
+      {
+        label: 'Vietnamese',
+        code: 'vi',
+      },
+    ],
+    defaultLocale: 'vi',
+    fallback: true,
   },
 })

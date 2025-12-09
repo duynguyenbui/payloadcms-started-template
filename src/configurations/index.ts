@@ -1,3 +1,19 @@
+/** Localization Configurations */
+export const slugifyConfigs = {
+  vi: {
+    lowerCase: true,
+    strict: true,
+    locale: 'vi',
+    trim: true,
+  },
+  en: {
+    lowerCase: true,
+    strict: true,
+    locale: 'en',
+    trim: true,
+  },
+}
+
 /**
  * Application Configurations
  */
