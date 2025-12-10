@@ -2,8 +2,8 @@ import { Field, CollectionConfig } from 'payload'
 
 import { currenciesConfig } from '@/constants'
 
-import { inventoryField } from '@/collections/CustomFields/inventoryField'
-import { pricesField } from '@/collections/CustomFields/pricesField'
+import { inventoryField } from '@/collections/Fields/inventoryField'
+import { pricesField } from '@/collections/Fields/pricesField'
 
 const fields: Field[] = [
   {
@@ -12,6 +12,7 @@ const fields: Field[] = [
       // @ts-expect-error - translations are not typed in plugins yet
       t('plugin-ecommerce:variantTitle'),
     type: 'text',
+    localized: true,
   },
   {
     name: 'product',

@@ -24,6 +24,7 @@ export const Categories: CollectionConfig = {
         t('plugin-ecommerce:categoryTitle'),
       type: 'text',
       required: true,
+      localized: true,
     },
     {
       name: 'parent',

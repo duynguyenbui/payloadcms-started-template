@@ -2,8 +2,8 @@ import { DefaultDocumentIDType, slugField, Where, type CollectionConfig, type Fi
 
 import { currenciesConfig } from '@/constants'
 
-import { inventoryField } from '@/collections/CustomFields/inventoryField'
-import { pricesField } from '@/collections/CustomFields/pricesField'
+import { inventoryField } from '@/collections/Fields/inventoryField'
+import { pricesField } from '@/collections/Fields/pricesField'
 import { slugifyConfigs } from '@/configurations'
 import slugify from 'slugify'
 
@@ -15,6 +15,7 @@ const fields: Field[] = [
       t('plugin-ecommerce:productTitle'),
     type: 'text',
     required: true,
+    localized: true,
   },
   {
     name: 'description',
@@ -22,6 +23,7 @@ const fields: Field[] = [
     label: ({ t }) =>
       // @ts-expect-error - translations are not typed in plugins yet
       t('plugin-ecommerce:productDescription'),
+    localized: true,
   },
   {
     name: 'enableVariants',
@@ -29,6 +31,7 @@ const fields: Field[] = [
     label: ({ t }) =>
       // @ts-expect-error - translations are not typed in plugins yet
       t('plugin-ecommerce:enableVariants'),
+    localized: true,
   },
   inventoryField({
     overrides: {

@@ -24,7 +24,7 @@ export async function GET(): Promise<Response> {
     if (adminUser.docs.length === 0) {
       await payload.create({
         collection: 'users',
-        data: { email: 'admin@payloadcms.com', password: 'admin' },
+        data: { email: 'admin@payloadcms.com', password: 'admin', name: 'Admin User' },
       })
     }
 

@@ -8,12 +8,13 @@ const fields: Field[] = [
       t('plugin-ecommerce:variantTypeLabel'),
     type: 'text',
     required: true,
+    localized: true,
   },
   {
-    name: 'name',
+    name: 'value',
     label: ({ t }) =>
       // @ts-expect-error - translations are not typed in plugins yet
-      t('plugin-ecommerce:variantTypeName'),
+      t('plugin-ecommerce:variantTypeValue'),
     type: 'text',
     required: true,
   },

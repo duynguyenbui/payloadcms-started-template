@@ -28,6 +28,15 @@ export const applicationConfig = {
 }
 
 /**
+ * Company Configurations
+ * @description Configurations for company information
+ */
+export const companyConfig = {
+  siteName: process.env.SITE_NAME || 'E-Commerce',
+  companyName: process.env.COMPANY_NAME || 'E-Commerce Ltd.',
+}
+
+/**
  * S3 Configurations
  * @description Configurations for S3
  */

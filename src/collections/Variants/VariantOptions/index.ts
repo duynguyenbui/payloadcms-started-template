@@ -20,6 +20,7 @@ const fields: Field[] = [
       t('plugin-ecommerce:variantOptionLabel'),
     type: 'text',
     required: true,
+    localized: true,
   },
   {
     name: 'value',

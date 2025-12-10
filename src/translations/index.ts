@@ -5,12 +5,16 @@ export const translations: Partial<Record<AcceptedLanguages, any>> = {
     general: {
       collections: 'Danh sách',
       save: 'Lưu thay đổi',
-    },
-    system: {
-      logs: 'Nhật ký',
-      data: 'Dữ liệu',
+      globals: 'Liên kết',
     },
     'plugin-ecommerce': {
+      // Global
+      header: 'Đầu trang',
+      footer: 'Chân trang',
+      navItems: 'Menu điều hướng',
+      navItemName: 'Tên mục',
+      navItemPath: 'Đường dẫn',
+
       // Media
       media: 'Hình ảnh & tệp tin',
       mediaAlt: 'Mô tả hình ảnh (alt)',
@@ -46,7 +50,7 @@ export const translations: Partial<Record<AcceptedLanguages, any>> = {
 
       variantType: 'Thuộc tính sản phẩm',
       variantTypes: 'Thuộc tính sản phẩm',
-      variantTypeName: 'Tên thuộc tính',
+      variantTypeValue: 'Giá trị thuộc tính',
       variantTypeLabel: 'Nhãn thuộc tính',
 
       relatedProducts: 'Sản phẩm liên quan / gợi ý',
@@ -103,12 +107,16 @@ export const translations: Partial<Record<AcceptedLanguages, any>> = {
     general: {
       collections: 'Lists',
       save: 'Save changes',
-    },
-    system: {
-      logs: 'Logs',
-      data: 'Data',
+      globals: 'Links',
     },
     'plugin-ecommerce': {
+      // Global
+      header: 'Header',
+      footer: 'Footer',
+      navItems: 'Navigation items',
+      navItemName: 'Item name',
+      navItemPath: 'Item path',
+
       // Media
       media: 'Images & files',
       mediaAlt: 'Image alt text',
@@ -144,7 +152,7 @@ export const translations: Partial<Record<AcceptedLanguages, any>> = {
 
       variantType: 'Product attribute',
       variantTypes: 'Product attributes',
-      variantTypeName: 'Attribute name',
+      variantTypeValue: 'Attribute value',
       variantTypeLabel: 'Attribute label',
 
       relatedProducts: 'Related / suggested products',

@@ -22,6 +22,8 @@ import { applicationConfig } from './configurations'
 import { translations } from './translations'
 import { vi } from 'payload/i18n/vi'
 import { en } from 'payload/i18n/en'
+import { Header } from './collections/Globals/Header'
+import { Footer } from './collections/Globals/Footer'
 
 const collections = [
   Users,
@@ -34,6 +36,8 @@ const collections = [
   Orders,
 ]
 
+const globals = [Header, Footer]
+
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
@@ -44,6 +48,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
+  globals,
   collections,
   editor: lexicalEditor(),
   secret: applicationConfig.payloadSecret,

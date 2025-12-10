@@ -1,8 +1,8 @@
 import type { CollectionConfig } from 'payload'
 
 import { currenciesConfig } from '@/constants'
-import { amountField } from '../CustomFields/amountField'
-import { currencyField } from '../CustomFields/currencyField'
+import { amountField } from '../Fields/amountField'
+import { currencyField } from '../Fields/currencyField'
 
 export const Orders: CollectionConfig = {
   slug: 'orders',
