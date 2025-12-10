@@ -985,6 +985,7 @@ export interface Header {
     | {
         name: string;
         path: string;
+        newTab?: boolean | null;
         id?: string | null;
       }[]
     | null;
@@ -1001,6 +1002,7 @@ export interface Footer {
     | {
         name: string;
         path: string;
+        newTab?: boolean | null;
         id?: string | null;
       }[]
     | null;
@@ -1017,6 +1019,7 @@ export interface HeaderSelect<T extends boolean = true> {
     | {
         name?: T;
         path?: T;
+        newTab?: T;
         id?: T;
       };
   updatedAt?: T;
@@ -1033,6 +1036,7 @@ export interface FooterSelect<T extends boolean = true> {
     | {
         name?: T;
         path?: T;
+        newTab?: T;
         id?: T;
       };
   updatedAt?: T;

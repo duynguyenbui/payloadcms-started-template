@@ -236,10 +236,12 @@ export const seed = async ({
           {
             name: 'Shirts',
             path: '/search/shirts',
+            newTab: true,
           },
           {
             name: 'Stickers',
             path: '/search/stickers',
+            newTab: true,
           },
         ],
       },

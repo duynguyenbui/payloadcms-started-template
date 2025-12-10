@@ -33,6 +33,20 @@ export const Header: GlobalConfig = {
           type: 'text',
           required: true,
         },
+        {
+          name: 'newTab',
+          type: 'checkbox',
+          admin: {
+            style: {
+              alignSelf: 'flex-end',
+            },
+            width: '50%',
+          },
+          label: ({ t }) =>
+            // @ts-expect-error
+            t('plugin-ecommerce:navItemOpenInNewTab'),
+          defaultValue: false,
+        },
       ],
       maxRows: 6,
     },

@@ -9,11 +9,12 @@ export const translations: Partial<Record<AcceptedLanguages, any>> = {
     },
     'plugin-ecommerce': {
       // Global
-      header: 'Đầu trang',
-      footer: 'Chân trang',
+      header: 'Liên kết trên cùng',
+      footer: 'Liên kết dưới cùng',
       navItems: 'Menu điều hướng',
       navItemName: 'Tên mục',
       navItemPath: 'Đường dẫn',
+      navItemOpenInNewTab: 'Mở trong tab mới',
 
       // Media
       media: 'Hình ảnh & tệp tin',
@@ -116,6 +117,7 @@ export const translations: Partial<Record<AcceptedLanguages, any>> = {
       navItems: 'Navigation items',
       navItemName: 'Item name',
       navItemPath: 'Item path',
+      navItemOpenInNewTab: 'Open in new tab',
 
       // Media
       media: 'Images & files',
