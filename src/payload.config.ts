@@ -7,6 +7,7 @@ import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 // Uncomment the following line to enable S3 storage adapter
 // import { s3Storage } from '@payloadcms/storage-s3'
+import { importExportPlugin } from '@payloadcms/plugin-import-export'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
@@ -79,6 +80,10 @@ export default buildConfig({
     //     },
     //   },
     // }),
+    importExportPlugin({
+      collections: ['users'],
+      // see below for a list of available options
+    }),
   ],
   i18n: {
     fallbackLanguage: 'vi',
